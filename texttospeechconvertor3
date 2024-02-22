@@ -1,0 +1,26 @@
+from gtts import gTTS
+import os 
+from tkinter import *
+
+root=Tk()
+canvas=Canvas(root,height=300,width=400)
+canvas.pack()
+
+def texttospeech():
+    t = entry.get()
+    language='en'
+    output=gTTS(text=t,lang='en',slow=False)
+    output.save("output.mp3")
+    os.system("start output.mp3")
+
+
+
+text=Label(text="TEXT TO SPEECH CONVERT APP",font=30,fg='red')
+canvas.create_window(200,100,window=text)
+entry=Entry(root)
+canvas.create_window(200,180,window=entry)
+
+button=Button(text="convert",command=texttospeech)
+canvas.create_window(200,230,window=button)   #c
+
+root.mainloop()
